@@ -19,7 +19,7 @@ function random(min, max) {
 
 function prU(text) {
   if (!text) return text;
-  return text.replace(/[^a-z0-9#]/gi, "");
+  return text.replace(/[!*_`]/g, "");
 }
 
 client.users.findUser = findUser;
