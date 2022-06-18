@@ -11,7 +11,7 @@ module.exports = {
       .setFooter({ text: `${message.author.tag} (${message.author.id})`, iconURL: message.author.avatarURL({ dynamic: true }) });
     let arr = [];
     Object.entries(require("../../economy.json")).forEach(t => {
-      arr.push({ label: t[0].replaceAll("-", " "), description: `Salário: $${t[1].min} - $${t[1].max} | Level: ${(t[1].min + t[1].max) * 8}`, value: `${t[0]}/${(t[1].min + t[1].max) * 8}` });
+      arr.push({ label: t[0].replaceAll("-", " "), description: `Salário: $${t[1].min} - $${t[1].max} | Level: ${(t[1].min + t[1].max) * 9}`, value: `${t[0]}/${(t[1].min + t[1].max) * 8}` });
     });
     
     let row = new Discord.MessageActionRow().addComponents(new Discord.MessageSelectMenu().setCustomId(`works-${message.author.id}`).setPlaceholder(`Escolher profissão`).addOptions(arr));
