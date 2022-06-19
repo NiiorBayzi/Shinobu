@@ -19,12 +19,12 @@ module.exports = {
       message.reply(`<:_:987355647987318834> | Você criou uma cidade chamada **\`${parseText(args.slice(0, 3).join(" "))}\`**, use \`sk?city\` para ver as informações.`);
     } else {
       let user = client.users.findUser(args.join(" ")) || message.author;
-      let city = cities.find(c => (c.members || []).includes(user.id));
+      let city = cities.find(c => (Object.values(c.members) || []).includes(user.id));
 
       if (!city) return message.reply(`<:_:987355647987318834> | **${parseText(user.username)}** não está em uma cidade ainda.`);
 
       let members = [];
-      city.members.forEach(u => members.push(`**${parseText(client.users.findUser(u).tag)}**`))
+      Object.values(city.members).forEach(u => members.push(`**${parseText(client.users.findUser(u).tag)}**`))
       let embed = new Discord.MessageEmbed()
         .setColor(client.config.color)
         .setTitle(`<:_:987363119837872138> | Cidade de ${user.username}`)
