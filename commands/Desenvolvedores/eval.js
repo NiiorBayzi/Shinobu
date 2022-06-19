@@ -10,7 +10,7 @@ module.exports = {
     try {
       let code = args.join(" ");
       let res = "";
-      if (args[0] === "--o ") {
+      if (args[0] === "--o") {
         args.pop();
         code = args.join(" ");
         global.main = client;
