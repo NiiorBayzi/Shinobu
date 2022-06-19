@@ -1,6 +1,6 @@
 module.exports = {
   name: "bal",
-  aliases: ["atm", "saldo"],
+  aliases: ["atm", "saldo", "dinheiro"],
   run: async (client, message, args) => {
     let user = client.users.findUser(args.join(" ")) || message.author;
 
