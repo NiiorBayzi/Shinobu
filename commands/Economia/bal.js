@@ -5,9 +5,9 @@ module.exports = {
     let user = client.users.findUser(args.join(" ")) || message.author;
 
     if (user.id === message.author.id) {
-      message.reply(`<:_:986394930844946523> | <@${user.id}>, você possui **$${(db.get(`users.${user.id}.cash`) || 0).toLocaleString()}** em sua carteira.`);
+      message.reply(`<:_:986394930844946523> | <@${user.id}>, você possui **$${(db.get(`users/${user.id}/cash`) || 0).toLocaleString()}** em sua carteira.`);
     } else {
-      message.reply(`<:_:986394930844946523> | <@${message.author.id}>, **${parseText(user.tag)}** possui **$${(db.get(`users.${user.id}.cash`) || 0).toLocaleString()}** em sua carteira.`) 
+      message.reply(`<:_:986394930844946523> | <@${message.author.id}>, **${parseText(user.tag)}** possui **$${(db.get(`users/${user.id}/cash`) || 0).toLocaleString()}** em sua carteira.`) 
     }
   }
 }
