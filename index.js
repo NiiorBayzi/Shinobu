@@ -12,11 +12,7 @@ const app = require("express")();
 app.get("/", (req, res) => {
   res.send("A aplicação está online.");
 });
-app.listen(process.env.PORT)
-
-glob.sync("./database/models/*.js").forEach(file => {
-  require(file);
-});
+app.listen(process.env.PORT);
 
 glob.sync("./commands/**/*.js").forEach(file => {
   const command = require(file);
