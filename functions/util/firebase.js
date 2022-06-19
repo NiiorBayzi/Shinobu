@@ -11,9 +11,3 @@ const db = new FirebaseUtil({
 });
 
 global.db = db;
-
-db.get = function (caminho) {
-  (async () => {
-    return await db.get(caminho);
-  })();
-}
