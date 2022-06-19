@@ -10,6 +10,7 @@ function parseT(mls, slice) {
   if (!slice) slice = 3;
   let time = [];
   Object.entries(ms(mls)).filter(t => t[1] > 0).slice(0, slice).forEach(t => time.push(`${t[1]}${t[0]}`));
+  time.splice(time.indexOf("milliseconds"), 1);
 
   return time.join(" ").replace("days", "d").replace("hours", "h").replace("minutes", "m").replace("seconds", "s");
 }
