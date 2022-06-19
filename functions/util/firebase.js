@@ -10,6 +10,4 @@ const db = new FirebaseUtil({
   measurementId: "G-F2H4QN02GS"
 });
 
-(async () => {
-  global.db = await db;
-})();
+global.db = await db;
