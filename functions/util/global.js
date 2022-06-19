@@ -8,10 +8,10 @@ module.exports = async () => {
       let cash = await db.get(`users/${u}/cash`);
       pib = pib + cash;
     });
-    c.pib = await pib;
+    c.pib = pib;
     c.index = i;
     return [i++, c];
   });
 
-  global.cities = new Discord.Collection(result);
+  global.cities = new Discord.Collection(await result);
 }
