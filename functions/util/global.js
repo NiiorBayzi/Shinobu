@@ -2,7 +2,7 @@ module.exports = () => {
   let cts = db.get("cities");
   if (!cts) cts = {};
   let result = Object.keys(cts).map((key, pib) => {
-    cts[${Number(key)}].members.forEach(u => pib = pib + (db.get(`users/${u}/cash`) || 0));
+    cts[Number(key)].members.forEach(u => pib = pib + (db.get(`users/${u}/cash`) || 0));
     cts[key].pib = pib;
     return [Number(key), cts[key]]
   });
