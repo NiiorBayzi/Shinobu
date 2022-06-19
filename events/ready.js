@@ -1,6 +1,7 @@
 module.exports = {
   name: "ready",
   execute: () => {
-    console.log(`Logged in ${client.user.tag}`);
+    client.connectDatabase();
+    console.log(`[ Discord.js ] Successfully connected in ${client.user.tag}`);
   }
 }
