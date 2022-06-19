@@ -2,7 +2,7 @@ module.exports = {
   name: "trabalhos",
   category: "Economia",
   run: async (client, message, args) => {
-    let xp = db.get(`users/${message.author.id}/xp`) || 0;
+    let xp = await db.get(`users/${message.author.id}/xp`) || 0;
 
     let embed = new Discord.MessageEmbed()
       .setColor(client.config.color)
