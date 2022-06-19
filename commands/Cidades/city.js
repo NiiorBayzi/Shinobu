@@ -1,5 +1,5 @@
 function addCity(name, author) {
-  db.set(`cities/${cities.size}`, { name: prU(name), members: [author] });
+  db.set(`cities/${cities.size}`, { name: parseText(name), members: [author] });
 }
 
 module.exports = {
@@ -11,7 +11,7 @@ module.exports = {
     args = args.slice(args.indexOf(subcommand) + 1, args.length);
     if (subcommand === "create" || subcommand === "criar") {
       if (cities.find(x => (x.members || []).includes(message.author.id))) return message.reply("<:_:987355647987318834> | Você está em uma cidade, saia para criar uma.");
-      if ((db.get(`users/${message.author.id}/cash`) || 0) < 5000) return message.reply("<:_:986394930844946523> | Para criar uma cidade você precisa de **$5000** na carteira.");
+      if ((await db.get(`users/${message.author.id}/cash`) || 0) < 5000) return message.reply("<:_:986394930844946523> | Para criar uma cidade você precisa de **$5000** na carteira.");
       if (!parseText(args[0])) return message.reply("<:_:987355647987318834> | Coloque o nome de sua nova cidade.")
 
       addCity(parseText(args.slice(0, 3).join(" ")), message.author.id);
