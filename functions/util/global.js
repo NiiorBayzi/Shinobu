@@ -1,10 +1,11 @@
 module.exports = async () => {
   let cts = await db.get("cities");
   if (!cts) cts = [];
-  let result = cts.map((key, pib) => {
-    cts[Number(key)].members.forEach(u => pib = pib + (await db.get(`users/${u}/cash`) || 0));
-    cts[key].pib = pib;
-    return [Number(key), cts[key]]
+  let i = 0;
+  let result = cts.map((c, pib) => {
+    c.members.forEach(u => pib = pib + (await db.get(`users/${u}/cash`) || 0));
+    c.pib = pib;
+    return [i++, c]
   });
 
   global.cities = new Discord.Collection(result);
