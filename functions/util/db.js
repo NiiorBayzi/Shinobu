@@ -14,13 +14,10 @@ const dbF = new FirebaseUtil({
 
 client.connectDatabase = async() => {
   const connection = await mongoose.connect(process.env.MONGO_URL);
-  client.db = { connection };
-  
-  connection.once("open", function () {
-  client.db.city = client.db.connection.models.City;
-    console.log("[ Mongoose ] Successfully connected.");
-  });
+  let models = {
+    city: require("../../database/models/cityModel.js")
+  }
+  client.db = { connection, ...models};
 }
 
-require("../../database/models/cityModel.js");
 global.db = dbF;
