@@ -1,3 +1,5 @@
+require("./db.js");
+
 module.exports = async () => {
   let cts = await client.db.city.find();
   if (!cts) cts = [];
