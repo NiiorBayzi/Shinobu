@@ -6,13 +6,13 @@ function findUser(args) {
   return user;
 }
 
-function parseT(mls, slice) {
-  if (!slice) slice = 4;
-  let time = [];
-  Object.entries(ms(mls)).filter(t => t[1] > 0).slice(0, slice).forEach(t => time.push(`${t[1]}${t[0]}`));
-  time.splice(time.indexOf("milliseconds"), 1);
-
-  return time.join(" ").replace("days", "d").replace("hours", "h").replace("minutes", "m").replace("seconds", "s");
+function parseT(mls) {
+  let d = mls / 86400000;
+  let h = mls % 86400000 / 3600000;
+  let m = mls % 86400000 % 3600000 / 60000;
+  let s = mls % 86400000 % 3600000 % 60000 / 1000;
+  
+  return `${d > 0 ? `${d}d ` : ""}${h > 0 ? `${h}h ` : ""}${m > 0 ? `${m}m ` : ""}${s > 0 ? `${s}s` : ""}`;
 }
 function random(min, max) {
   return Math.round((Math.random() * (max - min)) + min)
