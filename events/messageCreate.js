@@ -25,7 +25,7 @@ search.addIndex('name');
 search.addIndex('aliases');
         let sh = search.search(command)[0]
 
-        return message.reply(`<:_:987795714069368844> | Não encontrei este comando${sh ? `, você quis dizer \`${sh.name}\`?` : "."}`);
+        return message.reply(`**[ <:_:987795714069368844> ] |** Não encontrei este comando${sh ? `, você quis dizer **\`${sh.name}\`**?` : "."}`);
       }
 
       try {
