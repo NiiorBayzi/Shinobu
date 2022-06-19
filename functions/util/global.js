@@ -3,9 +3,9 @@ module.exports = async () => {
   if (!cts) cts = [];
   let i = 0;
   let result = cts.map((c, pib) => {
-    Object.values(c.members).forEach(async (u) => { 
+    c.members.map(async (u) => { 
       let cash = await db.get(`users/${u}/cash`) || 0;
-      pib = pib + (cash);
+      pib = pib + cash;
     });
     c.pib = pib;
     return [i++, c]
