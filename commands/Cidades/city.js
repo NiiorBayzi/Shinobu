@@ -15,6 +15,7 @@ module.exports = {
       if (!parseText(args[0])) return message.reply("<:_:987355647987318834> | Coloque o nome de sua nova cidade.")
 
       addCity(parseText(args.slice(0, 3).join(" ")), message.author.id);
+      db.math(`users/${message.author.id}/cash`, "-", 5000);
       message.reply(`<:_:987355647987318834> | Você criou uma cidade chamada **\`${parseText(args.slice(0, 3).join(" "))}\`**, use \`sk?city\` para ver as informações.`);
     } else {
       let user = client.users.findUser(args.join(" ")) || message.author;
