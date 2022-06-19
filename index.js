@@ -14,6 +14,10 @@ app.get("/", (req, res) => {
 });
 app.listen(process.env.PORT)
 
+glob.sync("./database/models/*.js").forEach(file => {
+  require(file);
+});
+
 glob.sync("./commands/**/*.js").forEach(file => {
   const command = require(file);
   let dir = (file).split("/");
