@@ -3,7 +3,7 @@ module.exports = {
   category: "Economia",
   aliases: ["lb", "leaderboard", "top"],
   run: async (client, message, args) => {
-    let rank = Object.entries(db.get("users")).sort((a, b) => b - a).map(lb => ({
+    let rank = Object.entries(await db.get("users")).sort((a, b) => b - a).map(lb => ({
       money: lb[1], id: lb[0]
     }));
     let arr = [];
