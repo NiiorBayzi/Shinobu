@@ -8,7 +8,6 @@ client.commands = new Collection();
 global.Discord = require("discord.js");
 global.client = client;
 global.db = new Database("main");
-global.ms = require("parse-ms");
 client.config = require("./config.json");
 require("./functions/util/utils.js");
 require("./functions/util/global.js")();
