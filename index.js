@@ -3,6 +3,7 @@ const client = new Client({ intents: 32767 });
 const glob = require("glob");
 
 global.Discord = require("discord.js");
+global.mongoose = require("mongoose");
 client.commands = new Collection();
 global.client = client;
 client.config = require("./config.json");
