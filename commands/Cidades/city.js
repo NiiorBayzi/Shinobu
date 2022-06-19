@@ -1,5 +1,6 @@
-function addCity(name, author) {
-  db.set(`cities/${cities.size}`, { name: parseText(name), members: [author] });
+async function addCity(name, author) {
+  let id = Array(await client.db.city.find())[0].length - 1
+  client.db.city.create({ _id: id, name: parseText(name), members: [author] });
 }
 
 module.exports = {
