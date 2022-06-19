@@ -10,21 +10,4 @@ const dbF = new FirebaseUtil({
   measurementId: "G-F2H4QN02GS"
 });
 
-let fb = {
-  get: (path) => {
-    (async () => {
-      return await dbF.get(path);
-    })();
-  },
-  all: () => {
-    (async () => {
-      return await dbF.all();
-    })();
-  },
-  set: (path, value) => {
-    db.set(path, value);
-    return true;
-  }
-}
-
-global.db = {...fb}
+global.db = dbF;
