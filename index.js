@@ -7,6 +7,7 @@ global.mongoose = require("mongoose");
 client.commands = new Collection();
 global.client = client;
 client.config = require("./config.json");
+client.db.city = require("./database/models/cityModel.js");
 
 const app = require("express")();
 app.get("/", (req, res) => {
