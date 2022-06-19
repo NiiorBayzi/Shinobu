@@ -5,6 +5,7 @@ const CitySchema = new mongoose.Schema({
   },
   members: {
     type: Object,
+    default: [],
     required: true
   },
   _id: {
