@@ -14,9 +14,8 @@ module.exports = {
         code = code.replace("--o ", "");
         global.main = client;
         global.main.message = message;
-        global.db = db
         global.main.message.args = args;
-        res = require('util').inspect(await Object.getPrototypeOf(async () => { }).constructor(code)())
+        res = require('util').inspect(await Object.getPrototypeOf(async () => { }).constructor(code)());
       } else {
         res = await require("util").inspect(eval(code));
       }
