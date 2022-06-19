@@ -1,10 +1,9 @@
 const { Client, Collection, MessageEmbed } = require("discord.js");
 const client = new Client({ intents: 32767 });
 const glob = require("glob");
-client.commands = new Collection();
 
-// global
 global.Discord = require("discord.js");
+client.commands = new Collection();
 global.client = client;
 client.config = require("./config.json");
 
@@ -26,6 +25,13 @@ glob.sync("./events/*.js").forEach(file => {
   client.on(event.name, (...args) => {
     event.execute(client, ...args);
   });
+});
+
+glob.sync("./functions/**/*.js").forEach(file => {
+  let req = require(file);
+  if (typeof req === "function") {
+    req();
+  };
 });
 
 client.on("messageUpdate", (oldMessage, newMessage) => {
