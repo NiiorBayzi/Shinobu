@@ -2,6 +2,7 @@ function findUser(args) {
   let user = null;
   args = args.toString();
   if (!args) return user;
+  if (typeof args != "string") return user;
   user = client.users.cache.get(args.replace(/[\\<>@!]/g, "").trim()) || client.users.cache.find(u => u.tag.startsWith(args) || u.username.startsWith(args)) || null;
 
   return user;
