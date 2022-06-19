@@ -8,6 +8,7 @@ module.exports = async () => {
       pib = pib + (cash);
     });
     c.pib = pib;
+    c.members = Object.values(c.members);
     return [i++, c]
   });
 
