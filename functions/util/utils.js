@@ -7,10 +7,10 @@ function findUser(args) {
 }
 
 function parseT(mls) {
-  let d = mls / 86400000;
-  let h = mls % 86400000 / 3600000;
-  let m = mls % 86400000 % 3600000 / 60000;
-  let s = mls % 86400000 % 3600000 % 60000 / 1000;
+  let d = Math.floor(mls / 86400000);
+  let h = Math.floor(mls % 86400000 / 3600000);
+  let m = Math.floor(mls % 86400000 % 3600000 / 60000);
+  let s = Math.floor(mls % 86400000 % 3600000 % 60000 / 1000);
   
   return `${d > 0 ? `${d}d ` : ""}${h > 0 ? `${h}h ` : ""}${m > 0 ? `${m}m ` : ""}${s > 0 ? `${s}s` : ""}`;
 }
