@@ -83,4 +83,9 @@ cities.sort((a, b) => b.pib - a.pib).map((lb, i) => {
   }
 });
 
+client.db.connection.once("open", function () {
+  client.db.city = client.db.connection.models.City;
+  console.log("[ Mongoose ] Successfully connected.");
+});
+
 client.login(process.env.token);
