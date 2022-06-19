@@ -32,7 +32,7 @@ module.exports = {
       let embed = new Discord.MessageEmbed()
         .setColor(client.config.color)
         .setTitle(`<:_:987363119837872138> | Cidade de ${user.username}`)
-        .addFields({ name: "<:_:987355647987318834> » Informações:", value: `>>> **Nome:** ${city.name}\n**Dono:** ${parseText(client.users.findUser(members[0]))}` }, { name: `<:_:987362684565618829> » PIB:`, value: `> PIB de **$${city.pib.toLocaleString()}**` }, { name: `<:_:987362339969990707> » Habitantes: [${city.members.length}]`, value: `>>> ${members.join("\n")}` })
+        .addFields({ name: "<:_:987355647987318834> » Informações:", value: `>>> **Nome:** ${city.name}\n**Dono:** ${parseText(members[0])}` }, { name: `<:_:987362684565618829> » PIB:`, value: `> PIB de **$${city.pib.toLocaleString()}**` }, { name: `<:_:987362339969990707> » Habitantes: [${city.members.length}]`, value: `>>> ${members.join("\n")}` })
         .setThumbnail(user.avatarURL({ dynamic: true }))
 
       message.reply({ embeds: [embed] });
