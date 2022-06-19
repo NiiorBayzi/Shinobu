@@ -9,6 +9,7 @@ global.client = client;
 client.config = require("./config.json");
 require("./functions/util/utils.js");
 require("./functions/util/global.js")();
+require("./functions/util/firebase.js");
 
 const app = require("express")();
 app.get("/", (req, res) => {
