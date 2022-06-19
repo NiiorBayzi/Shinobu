@@ -18,5 +18,5 @@ client.connectDatabase = async() => {
   console.log("[ Mongoose ] Successfully connected.");
 }
 
-require("./database/models/cityModel.js");
+require("../../database/models/cityModel.js");
 global.db = dbF;
