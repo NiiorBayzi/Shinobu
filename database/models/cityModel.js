@@ -6,6 +6,10 @@ const CitySchema = new mongoose.Schema({
   members: {
     type: Object,
     required: true
+  },
+  _id: {
+    type: String,
+    required: true
   }
 });
 const City = mongoose.model("City", CitySchema);
