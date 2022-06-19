@@ -12,9 +12,10 @@ const dbF = new FirebaseUtil({
   measurementId: "G-F2H4QN02GS"
 });
 
-client.connectDatabase() = async connectDatabase() {
+client.connectDatabase = async() {
   const connection = await mongoose.connect(process.env.MONGO_URL);
   client.db = { connection };
+  console.log("[ Mongoose ] Successfully connected.");
 }
 
 global.db = dbF;
