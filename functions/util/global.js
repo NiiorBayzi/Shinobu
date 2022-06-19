@@ -1,5 +1,5 @@
 module.exports = async () => {
-  let cts = await db.get("cities");
+  let cts = await client.db.city.find();
   if (!cts) cts = [];
   let i = 0;
   let result = cts.map((c) => {
