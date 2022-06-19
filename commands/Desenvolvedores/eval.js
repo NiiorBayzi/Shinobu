@@ -12,7 +12,7 @@ module.exports = {
       let res = "";
       if (args[0] === "--o ") {
         args.pop();
-        code = code.join(" ");
+        code = args.join(" ");
         global.main = client;
         global.main.message = message;
         global.main.message.args = args;
