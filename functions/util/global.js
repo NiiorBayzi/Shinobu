@@ -2,7 +2,7 @@ module.exports = async () => {
   let cts = await db.get("cities");
   if (!cts) cts = [];
   let i = 0;
-  let result = cts.map(async (c) => {
+  let result = cts.map((c) => {
     let pib = 0;
     c.members.map(async (u) => { 
       let cash = await db.get(`users/${u}/cash`);
@@ -13,5 +13,5 @@ module.exports = async () => {
     return [i++, c];
   });
 
-  global.cities = new Discord.Collection(await result);
+  global.cities = new Discord.Collection(result);
 }
