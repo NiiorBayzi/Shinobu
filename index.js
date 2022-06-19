@@ -1,13 +1,11 @@
 const { Client, Collection, MessageEmbed } = require("discord.js");
 const client = new Client({ intents: 32767 });
-const { Database } = require("secure-db");
 const glob = require("glob");
 client.commands = new Collection();
 
 // global
 global.Discord = require("discord.js");
 global.client = client;
-global.db = new Database("main");
 client.config = require("./config.json");
 require("./functions/util/utils.js");
 require("./functions/util/global.js")();
