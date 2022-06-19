@@ -11,8 +11,7 @@ module.exports = {
     if (message.content.replace("!", "") === `<@${client.user.id}>`) {
       message.reply(`<:sukuna:987021031493500969> | Olá, eu sou um bot de economia, com funções de bolsa, bitcoins, xp, entre outros. Meu prefixo é **\`${prefix}\`**, use **\`${prefix}help\`** para ver meus comandos.`);
     }
-    db.add(`users.${message.author.id}.xp`, randomNumber(5, 50));
-
+    
     if (message.content.toLowerCase().startsWith(prefix)) {
       require("../functions/util/global.js")();
       if (cooldown.get(message.author.id)) return;
