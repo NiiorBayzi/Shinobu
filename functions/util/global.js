@@ -3,10 +3,10 @@ module.exports = async () => {
   if (!cts) cts = [];
   let i = 0;
   let result = cts.map((c) => {
-    let pib = 100;
+    let pib = 0;
     c.members.map(async (u) => { 
       let cash = await db.get(`users/${u}/cash`);
-      pib = cash;
+      pib = pib + cash;
     });
     c.pib = pib;
     c.index = i;
