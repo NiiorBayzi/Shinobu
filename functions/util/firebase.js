@@ -1,5 +1,5 @@
 const FirebaseUtil = require("firebase-util.js");
-const db = new FirebaseUtil({
+const dbF = new FirebaseUtil({
   apiKey: "AIzaSyDPDNUfk1IIlcphWfcw-PhLzuNx1N0TQTI",
   authDomain: "ryomen-sukuna.firebaseapp.com",
   databaseURL: "https://ryomen-sukuna-default-rtdb.firebaseio.com",
@@ -10,4 +10,21 @@ const db = new FirebaseUtil({
   measurementId: "G-F2H4QN02GS"
 });
 
-global.db = db;
+let fb = {
+  get: (path) => {
+    (async () => {
+      return await dbF.get(path);
+    })();
+  },
+  all: () => {
+    (async () => {
+      return await dbF.all();
+    })();
+  },
+  set: (path, value) => {
+    db.set(path, value);
+    return true;
+  }
+}
+
+global.db = {...fb}
