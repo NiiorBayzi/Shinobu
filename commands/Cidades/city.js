@@ -24,7 +24,8 @@ module.exports = {
       if (!city) return message.reply(`<:_:987355647987318834> | **${parseText(user.username)}** não está em uma cidade ainda.`);
 
       let members = [];
-      city.members.forEach(u => members.push(`**${parseText(client.users.findUser(u.toString()).tag)}**`))
+      let m = await db.get(`cities/${city.index}/members`);
+      city.members.forEach(u => client.users.findUser(u) ? members.push(`**${parseText(client.users.findUser(u).tag)}**`) : db.set(`cities/${city.index}/members`, m.splice(m.indexOf(u), 1)))
       let embed = new Discord.MessageEmbed()
         .setColor(client.config.color)
         .setTitle(`<:_:987363119837872138> | Cidade de ${user.username}`)
