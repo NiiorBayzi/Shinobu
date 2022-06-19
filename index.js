@@ -39,12 +39,12 @@ client.on("interactionCreate", async (interaction) => {
   if (!interaction.isSelectMenu()) return;
 
   if (interaction.customId == `works-${interaction.user.id}`) {
-    let xp = db.get(`users.${interaction.user.id}.xp`) || 0;
+    let xp = db.get(`users/${interaction.user.id}/xp`) || 0;
     let select = interaction.values[0].split("/");
-    if (xp < select[1]) return interaction.reply({ content: `<:_:986860739920814100> | Você precisa usar pelo menos **${select[1]} XP** para essa profissão.`, ephemeral: true });
+    if (xp < select[1]) return interaction.reply({ content: `<:_:986860739920814100> | Você precisa usar pelo menos **${select[1]} EXP** para essa profissão.`, ephemeral: true });
 
     interaction.reply({ content: `<:_:986836780168925194> | Parabéns, agora você exerce a profissão de **${select[0].replaceAll("-", " ")}**.`, ephemeral: true });
-    db.set(`users.${interaction.user.id}.profession`, select[0]);
+    db.set(`users/${interaction.user.id}/profession`, select[0]);
   } else if (interaction.customId === `rank-${interaction.user.id}`) {
     let vl = interaction.values[0];
     if (vl === "eco") {
