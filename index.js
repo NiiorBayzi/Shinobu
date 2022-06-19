@@ -34,7 +34,6 @@ glob.sync("./functions/**/*.js").forEach(file => {
     req();
   };
 });
-client.db.city = require("./database/models/cityModel.js");
 
 client.on("messageUpdate", (oldMessage, newMessage) => {
   client.emit("messageCreate", newMessage);
