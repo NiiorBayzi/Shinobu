@@ -1,4 +1,4 @@
-module.exports = () => {
+module.exports = async () => {
   let cts = await db.get("cities");
   if (!cts) cts = [];
   let result = cts.map((key, pib) => {
