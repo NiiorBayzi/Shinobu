@@ -4,7 +4,7 @@ module.exports = async () => {
   let i = 0;
   let result = cts.map((c) => {
     let pib = 0;
-    c.members.map(async (u) => { 
+    c.members.forEach(async (u) => { 
       let cash = await db.get(`users/${u}/cash`) || 0;
       pib = pib + cash;
     });
