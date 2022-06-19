@@ -1,6 +1,6 @@
 module.exports = () => {
   let cts = db.get("cities");
-  if (typeof cts != "object") cts = {}
+  if (!cts) cts = {};
   let result = Object.keys(cts).map((key, pib) => {
     db.get(`cities.${Number(key)}.members`).forEach(u => pib = pib + (db.get(`users.${u}.cash`) || 0));
     cts[key].pib = pib;
