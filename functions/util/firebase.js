@@ -1,4 +1,5 @@
-const db = require("firebase-util.js")({
+const FirebaseUtil = require("firebase-util.js");
+const db = new FirebaseUtil({
   apiKey: "AIzaSyDPDNUfk1IIlcphWfcw-PhLzuNx1N0TQTI",
   authDomain: "ryomen-sukuna.firebaseapp.com",
   databaseURL: "https://ryomen-sukuna-default-rtdb.firebaseio.com",
