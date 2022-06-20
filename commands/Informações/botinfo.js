@@ -8,8 +8,11 @@ module.exports {
       .setThumbnail(message.author.avatarURL({ dynamic: true })
       .setDescription(`Olá **${parseText(message.author.username)}**, eu sou o **${client.user.username}**, um bot de **Economia de Cidades**`)
       .addFields({
-        name: `» Informações`,
+        name: `(${emoji.bot}) » Informações`,
         value: `>>> Criador: ${client.users.cache.get("916712541797896263").tag} \`(916712541797896263)\``
+      }, {
+        name: `(${emoji.statistics}) » Estatísticas`,
+        value: `>>> **Servidores:** ${client.guilds.size}\nUsuários`
       })
       .setFooter({ name: message.author.tag, iconURL: message.author.avatarURL() });
       .setTimestamp()
