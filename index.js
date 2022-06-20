@@ -6,6 +6,8 @@ search.indexStrategy = new jssearch.AllSubstringsIndexStrategy();
 const { Client, Collection, MessageEmbed } = Discord;
 global.client = new Client({ intents: 32767 });
 client.commands = new Collection();
+client.config = require("config.json");
+emoji = client.config.emojis;
 
 client.once("ready", () => {
   console.log(`[ Discord.js ] Successfully connected in ${client.user.tag}.`);
@@ -39,7 +41,11 @@ client.on("messageCreate", async (message) => {
     }
 
     try {
-      cmd.run(client, message, args);
+      if ((cmd.dev || false)) {
+        if (!(client.config.devs || []).includes(message.author.id)) return message.reply(`**(${emoji.dev}) | Comando permitido apenas para desenvolvedores.**`);
+      } else {
+        cmd.run(client, message, args);
+      }
       
       cooldown.set(message.author.id, true);
       setCooldown(() => cooldown.delete(message.author.id), 4000)
