@@ -31,13 +31,13 @@ client.on("messageCreate", async (message) => {
     let args = message.content.trim().slice(prefix.length).split(/ +/g);
     let command = args.shift().toLowerCase();
     if (!command) return message.reply(`>>> **(${emoji.error}) | ${parseText(message.author.username)}**, digite o comando que você quer executar.`);
-    let cmd = client.commands.get(command) || client.users.cache.find(c => (c.aliases || []).includes(command));
+    let cmd = client.commands.get(command) || client.aliases.cache.find(c => (c.aliases || []).includes(command));
     if (!cmd) {
       search.addDocuments(client.commands.filter(x => (x.dev || false) != true));
       search.addIndex('name');
       search.addIndex('aliases');
       let sh = search.search(command)[0];
-      return message.reply(`Não encontrei este comando${sh ? `, você quis dizer \`${sh.name}\`?` : ", verifique como você colocou."}`);
+      return message.reply(`>>> **(${emoji.not_finded}) | ${parseText(message.author.username)}**, não encontrei este comando${sh ? `, você quis dizer \`${sh.name}\`?` : ", verifique como você colocou."}`);
     }
 
     try {
