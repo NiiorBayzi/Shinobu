@@ -33,7 +33,7 @@ client.on("messageCreate", async (message) => {
     if (!command) return;
     let cmd = client.commands.get(command) || client.users.cache.find(c => (x.aliases || []).includes(command));
     if (!cmd) {
-      search.addDocuments(client.commands.filter(x => (x.dev || false) != true);
+      search.addDocuments(client.commands.filter(x => (x.dev || false) != true));
       search.addIndex('name');
       search.addIndex('aliases');
       let sh = search.search(command)[0];
