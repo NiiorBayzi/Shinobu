@@ -9,6 +9,17 @@ client.commands = new Collection();
 client.config = require("./config.json");
 emoji = client.config.emojis;
 
+// MongoDB
+global.mongoose = require("mongoose");
+function () {
+  const connection = mongoose.connect(process.env.MONGO_URL);
+  let models = {
+    city: require("./database/models/cityModel.js")
+  }
+  client.db = {connection,...models};
+}
+// ...
+
 client.once("ready", () => {
   console.log(`[ Discord.js ] Successfully connected in ${client.user.tag}.`);
 });
