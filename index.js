@@ -11,7 +11,7 @@ emoji = client.config.emojis;
 
 // MongoDB
 global.mongoose = require("mongoose");
-client.connectDatabase = async () {
+client.connectDatabase = async () => {
   const connection = await mongoose.connect(process.env.MONGO_URL);
   let models = {
     city: require("./database/models/cityModel.js")
