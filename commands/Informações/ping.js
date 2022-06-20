@@ -8,6 +8,6 @@ module.exports = {
       mongoPing = Date.now() - now;
     });
 
-    message.reply(`**(${emoji.ping) | Pong!**\n>>> **(${emoji.gateway) Gateway: \`${client.ws.ping}ms\`\n(${emoji.database}) Database: ${mongoPing}**`);
+    message.reply(`**(${emoji.ping}) | Pong!**\n>>> **(${emoji.gateway}) Gateway: \`${client.ws.ping}ms\`\n(${emoji.database}) Database: ${mongoPing}**`);
   }
 }
