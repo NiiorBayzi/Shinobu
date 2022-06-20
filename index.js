@@ -48,7 +48,7 @@ client.on("messageCreate", async (message) => {
       }
       
       cooldown.set(message.author.id, true);
-      setCooldown(() => cooldown.delete(message.author.id), 5000)
+      setTimeout(() => cooldown.delete(message.author.id), 5000)
     } catch (err) {
       message.reply(`>>> **(${emoji.error}) | ${parseText(message.author.username)},** ocorreu um erro, tente novamente.`);
       console.log(err);
