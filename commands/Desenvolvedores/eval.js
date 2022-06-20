@@ -4,9 +4,9 @@ const path = require("path");
 module.exports = {
   name: "eval",
   aliases: ["ev", "e"],
+  dev: true,
   category: "Desenvolvedores",
   run: async (client, message, args) => {
-    if (!client.config.devs.includes(message.author.id)) return message.reply("**<:_:986835551372075068> | Você não é um de meus desenvolvedores.**");
     try {
       let code = args.join(" ");
       let res = await require("util").inspect(eval(code));
