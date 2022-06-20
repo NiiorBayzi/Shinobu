@@ -3,7 +3,7 @@ module.exports = {
   aliases: ["latency", "latência"],
   run: async (client, message, args) => {
     let now = Date.now();
-    await client.db.users.findOneAndUpdate({ _id: client.user.id }, { $set: { ping: 1 } }).then((a) => {
+    await client.db.users.findOneAndUpdate({ _id: client.user.id }, { $set: { cash: 0 } }).then((a) => {
       global.mongoPing = Date.now() - now;
     });
 
