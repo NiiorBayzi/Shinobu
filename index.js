@@ -6,7 +6,7 @@ search.indexStrategy = new jssearch.AllSubstringsIndexStrategy();
 const { Client, Collection, MessageEmbed } = Discord;
 global.client = new Client({ intents: 32767 });
 client.commands = new Collection();
-client.config = require("config.json");
+client.config = require("./config.json");
 emoji = client.config.emojis;
 
 client.once("ready", () => {
