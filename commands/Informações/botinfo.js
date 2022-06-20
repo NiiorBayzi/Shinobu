@@ -2,8 +2,6 @@ module.exports {
   name: "botinfo",
   aliases: ["bi", "infobot"],
   run: async (client, message, args) => {
-    
-   
     let embed = new Discord.MessageEmbed()
       .setColor(client.config.color)
       .setAuthor({ name: client.user.username, iconURL: client.user.avatarURL() })
