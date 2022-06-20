@@ -4,7 +4,7 @@ module.exports = {
   run: async (client, message, args) => {
     let mongoPing = 1;
     let now = Date.now();
-    client.db.client.findOneAndUpdate({ _id: client.user.id }, { $set: { ping: 1 } }).then((a) => {
+    client.db.users.findOneAndUpdate({ _id: client.user.id }, { $set: { ping: 1 } }).then((a) => {
       mongoPing = Date.now() - now;
     });
 
