@@ -42,7 +42,11 @@ client.on("messageCreate", async (message) => {
 
     try {
       if ((cmd.dev || false)) {
-        if (!(client.config.devs || []).includes(message.author.id)) return message.reply(`>>> **(${emoji.dev}) | ${parseText(message.author.username)}**, comando permitido apenas para **desenvolvedores**.`);
+        if (!(client.config.devs || []).includes(message.author.id)) {
+          return message.reply(`>>> **(${emoji.dev}) | ${parseText(message.author.username)}**, comando permitido apenas para **desenvolvedores**.`);
+        } else {
+          cmd.run(client, message, args);
+        }
       } else {
         cmd.run(client, message, args);
       }
