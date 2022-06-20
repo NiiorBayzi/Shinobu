@@ -31,7 +31,7 @@ client.on("messageCreate", async (message) => {
     let args = message.content.trim().slice(prefix.length).split(/ +/g);
     let command = args.shift().toLowerCase();
     if (!command) return message.reply(`>>> **(${emoji.error}) | ${parseText(message.author.username)}**, digite o comando que você quer executar.`);
-    let cmd = client.commands.get(command) || client.aliases.find(c => (c.aliases || []).includes(command));
+    let cmd = client.commands.get(command) || client.commands.find(c => (c.aliases || []).includes(command));
     if (!cmd) {
       search.addDocuments(client.commands.filter(x => (x.dev || false) != true));
       search.addIndex('name');
