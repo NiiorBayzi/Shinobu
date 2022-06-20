@@ -47,12 +47,12 @@ client.on("messageCreate", async (message) => {
       return message.reply(`**(${emoji.searchUser}) | ${parseText(message.author.username)}**, não encontrei você em meu **(${emoji.database}) Banco de Dados**, irei criar seu perfil.\n>>> **(${emoji.forms}) | Criando perfil, aguarde...**`).then((msg) => {
         setTimeout(() => {
           msg.edit(`>>> **(${emoji.cloud_upload}) | ${parseText(message.author.username)}**, enviando dados do perfil para o **(${emoji.database}) Banco de Dados**...`);
-        }, 4000);
+        }, 6000);
         setTimeout(() => {
           client.db.users.create({ _id: message.author.id });
           msg.edit(`>>> **(${emoji.forms_complete})**, seu perfil foi criado com sucesso, agora você pode usar meus comandos.`);
           cooldown.delete(message.author.id);
-        }, 8000);
+        }, 12000);
       });
     }
     let args = message.content.trim().slice(prefix.length).split(/ +/g);
