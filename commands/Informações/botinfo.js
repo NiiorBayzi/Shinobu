@@ -12,7 +12,7 @@ module.exports {
         value: `>>> Criador: ${client.users.cache.get("916712541797896263").tag} \`(916712541797896263)\``
       }, {
         name: `(${emoji.statistics}) » Estatísticas`,
-        value: `>>> **Servidores:** ${client.guilds.size}\nUsuários`
+        value: `>>> **Servidores:** ${client.guilds.size.toLocaleString("pt-br")}\n**Usuários:** ${client.users.size.toLocaleString("pt-br")}\n**Comandos:** ${client.commands.size.toLocaleString("pt-br")}`
       })
       .setFooter({ name: message.author.tag, iconURL: message.author.avatarURL() });
       .setTimestamp()
