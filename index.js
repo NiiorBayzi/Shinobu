@@ -60,7 +60,7 @@ client.on("messageCreate", async (message) => {
     if (!command) return message.reply(`>>> **(${emoji.error}) | ${parseText(message.author.username)}**, digite o comando que você quer executar.`);
     let cmd = client.commands.get(command) || client.commands.find(c => (c.aliases || []).includes(command));
     if (!cmd) {
-      search.addDocuments(client.commands.filter(x => (x.dev || false) != true));
+      search.addDocuments(client.commands.filter(x => (x.dev || false) != true).map(x => x));
       search.addIndex('name');
       search.addIndex('aliases');
       let sh = search.search(command)[0];
