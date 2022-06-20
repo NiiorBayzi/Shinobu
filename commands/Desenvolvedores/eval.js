@@ -8,7 +8,13 @@ module.exports = {
   run: async (client, message, args) => {
     try {
       let code = args.join(" ");
-      let res = await require("util").inspect(eval(code));
+      let res = undefined;
+      if (code.startsWith("--o ")) {
+        code = args.shift().join(" ");
+        res = await Object.getPrototypeOf(async function ()  { }).constructor(code)();
+      } else {
+        res = await require("util").inspect(eval(code));
+      }
 
       message.channel.send(`\`\`\`js\n${res.slice(0, 1990).replaceAll(client.token, "/* Token */")}\`\`\``)
     } catch (err) {
