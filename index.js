@@ -55,4 +55,13 @@ client.on("messageCreate", async (message) => {
   }
 });
 
+// Functions
+client.users.findUser = function (args) {
+  let user = null;
+  if (!args) return user;
+  user = client.users.cache.get(args.replace(/[\\<>@!]/g, "").trim()) || client.users.cache.find(u => u.tag.startsWith(args) || u.username.startsWith(args)) || null;
+
+  return user;
+}
+
 client.login(process.env.token);
