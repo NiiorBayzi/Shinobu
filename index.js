@@ -38,7 +38,7 @@ glob.sync("./commands/**/*.js").forEach(f => {
 client.on("messageCreate", async (message) => {
   if (message.author.bot) return;
   const cooldown = new Collection();
-  let prefix = "sk?";
+  let prefix = "g?";
   
   if (message.content.toLowerCase().startsWith(prefix)) {
     if (cooldown.get(message.author.id)) return message.reply(`>>> **(${emoji.time}) | ${parseText(message.author.username)}**, você está executando meus comandos rápido demais.`);
