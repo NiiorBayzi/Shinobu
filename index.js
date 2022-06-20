@@ -11,17 +11,19 @@ emoji = client.config.emojis;
 
 // MongoDB
 global.mongoose = require("mongoose");
-function () {
-  const connection = mongoose.connect(process.env.MONGO_URL);
+client.connectDatabase = async () {
+  const connection = await mongoose.connect(process.env.MONGO_URL);
   let models = {
     city: require("./database/models/cityModel.js")
   }
   client.db = {connection,...models};
+  console.log("[ Mongoose ] Successfully connected.");
 }
 // ...
 
 client.once("ready", () => {
   console.log(`[ Discord.js ] Successfully connected in ${client.user.tag}.`);
+  client.connectDatabase();
 });
 
 glob.sync("./commands/**/*.js").forEach(f => {
