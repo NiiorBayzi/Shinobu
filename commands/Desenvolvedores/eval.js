@@ -12,9 +12,10 @@ module.exports = {
       if (code.startsWith("--o ")) {
         args.shift();
         code = args.join(" ");
+        global.main = client;
         global.main.message = message;
-        global.main.args = args;
-        res = await Object.getPrototypeOf(async function ()  { }).constructor(code)();
+        global.main.message.args = args;
+        res = require('util').inspect(await Object.getPrototypeOf(async () => { }).constructor(code)());
       } else {
         res = await require("util").inspect(eval(code));
       }
