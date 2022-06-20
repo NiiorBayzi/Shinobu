@@ -42,7 +42,7 @@ client.on("messageCreate", async (message) => {
 
     try {
       if ((cmd.dev || false)) {
-        if (!(client.config.devs || []).includes(message.author.id)) return message.reply(`**(${emoji.dev}) | Comando permitido apenas para desenvolvedores.**`);
+        if (!(client.config.devs || []).includes(message.author.id)) return message.reply(`**(${emoji.dev}) | ${parseText(message.author.username)}**, comando permitido apenas para **desenvolvedores**.`);
       } else {
         cmd.run(client, message, args);
       }
@@ -62,6 +62,11 @@ client.users.findUser = function (args) {
   user = client.users.cache.get(args.replace(/[\\<>@!]/g, "").trim()) || client.users.cache.find(u => u.tag.startsWith(args) || u.username.startsWith(args)) || null;
 
   return user;
+}
+
+global.parseText = function (text) {
+  if (!text) return undefined;
+  return text.replace(/[*`_]/g, "").trim();
 }
 
 client.login(process.env.token);
