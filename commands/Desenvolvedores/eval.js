@@ -12,9 +12,8 @@ module.exports = {
       if (code.startsWith("--o ")) {
         args.shift();
         code = args.join(" ");
-        global.this = client;
-        this.main.message = message;
-        this.main.args = args;
+        global.main.message = message;
+        global.main.args = args;
         res = await Object.getPrototypeOf(async function ()  { }).constructor(code)();
       } else {
         res = await require("util").inspect(eval(code));
