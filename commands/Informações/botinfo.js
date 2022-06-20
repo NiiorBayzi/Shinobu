@@ -9,5 +9,13 @@ module.exports {
       .setAuthor({ name: client.user.username, iconURL: client.user.avatarURL() })
       .setThumbnail(message.author.avatarURL({ dynamic: true })
       .setDescription(`Olá **${parseText(message.author.username)}**, eu sou o **${client.user.username}**, um bot de **Economia de Cidades**`)
+      .addFields({
+        name: `» Informações`,
+        value: `>>> Criador: ${client.users.cache.get("916712541797896263").tag} \`(916712541797896263)\``
+      })
+      .setFooter({ name: message.author.tag, iconURL: message.author.avatarURL() });
+      .setTimestamp()
+
+      message.reply({ embeds: [embed] });
   }
 }
