@@ -14,7 +14,7 @@ module.exports = {
         name: `(${emoji.statistics}) » Estatísticas`,
         value: `>>> **Servidores:** ${client.guilds.cache.size.toLocaleString("pt-br")}\n**Usuários:** ${client.users.cache.size.toLocaleString("pt-br")}\n**Comandos:** ${client.commands.size.toLocaleString("pt-br")}`
       })
-      .setFooter({ name: message.author.tag, iconURL: message.author.avatarURL() })
+      .setFooter({ text: message.author.tag, iconURL: message.author.avatarURL() })
       .setTimestamp()
 
       message.reply({ embeds: [embed] });
