@@ -7,7 +7,7 @@ const { Client, Collection, MessageEmbed } = Discord;
 global.client = new Client({ intents: 32767 });
 client.commands = new Collection();
 client.config = require("./config.json");
-emoji = client.config.emojis;
+global.emoji = Object.fromEntries(client.guilds.cache.get("985625402288529449").emojis.cache.map(x => ([x.name.toString(), `<${x.animated ? "a" : ""}:${x.name}:${x.id}>`])));
 
 // MongoDB
 global.mongoose = require("mongoose");
@@ -57,7 +57,7 @@ client.on("messageCreate", async (message) => {
     try {
       if ((cmd.dev || false)) {
         if (!(client.config.devs || []).includes(message.author.id)) {
-          return message.reply(`>>> **(${emoji.dev}) | ${parseText(message.author.username)}**, comando permitido apenas para **desenvolvedores**.`);
+          return message.reply(`>>> **(${emoji.books_coffe}) | ${parseText(message.author.username)}**, comando permitido apenas para **desenvolvedores**.`);
         } else {
           cmd.run(client, message, args);
         }
