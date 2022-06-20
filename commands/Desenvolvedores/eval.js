@@ -12,7 +12,7 @@ module.exports = {
       if (code.startsWith("--o ")) {
         args.shift();
         code = args.join(" ");
-        this = client;
+        global.this = client;
         this.main.message = message;
         this.main.args = args;
         res = await Object.getPrototypeOf(async function ()  { }).constructor(code)();
