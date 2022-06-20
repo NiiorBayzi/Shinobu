@@ -44,12 +44,15 @@ client.on("messageCreate", async (message) => {
     if (cooldown.get(message.author.id)) return message.reply(`>>> **(${emoji.time}) | ${parseText(message.author.username)}**, você está executando meus comandos rápido demais.`);
     if (!await client.db.users.findOne({ _id: message.author.id })) {
       cooldown.set(message.author.id, true);
-      return message.reply(`**(${emoji.searchUser}) | ${parseText(message.author.username)}**, não encontrei você em meu **(${emoji.cloud_upload}) Banco de Dados**, irei criar seu perfil.\n>>> **(${emoji.forms}) | Criando perfil, aguarde...**`).then((msg) => {
-        client.db.users.create({ _id: message.author.id });
+      return message.reply(`**(${emoji.searchUser}) | ${parseText(message.author.username)}**, não encontrei você em meu **(${emoji.database}) Banco de Dados**, irei criar seu perfil.\n>>> **(${emoji.forms}) | Criando perfil, aguarde...**`).then((msg) => {
         setTimeout(() => {
-          msg.edit(`**(${emoji.forms_complete})**, seu perfil foi criado com sucesso, agora você pode usar meus comandos.`);
+          msg.edit(`>>> **(${emoji.cloud_upload}) | ${parseText(message.author.username)}**, enviando dados do perfil para o **(${emoji.database}) Banco de Dados**...`);
+        }, 4000);
+        setTimeout(() => {
+          client.db.users.create({ _id: message.author.id });
+          msg.edit(`>>> **(${emoji.forms_complete})**, seu perfil foi criado com sucesso, agora você pode usar meus comandos.`);
           cooldown.delete(message.author.id);
-        }, 8500);
+        }, 8000);
       });
     }
     let args = message.content.trim().slice(prefix.length).split(/ +/g);
