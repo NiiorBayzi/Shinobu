@@ -5,7 +5,6 @@ module.exports = {
   name: "eval",
   aliases: ["ev", "e"],
   dev: true,
-  category: "Desenvolvedores",
   run: async (client, message, args) => {
     try {
       let code = args.join(" ");
