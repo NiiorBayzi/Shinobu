@@ -14,7 +14,8 @@ global.mongoose = require("mongoose");
 client.connectDatabase = async () => {
   const connection = await mongoose.connect(process.env.MONGO_URL);
   let models = {
-    city: require("./database/models/cityModel.js")
+    city: require("./database/models/cityModel.js"),
+    users: require("./database/models/userModel.js")
   }
   client.db = {connection,...models};
   console.log("[ Mongoose ] Successfully connected.");
