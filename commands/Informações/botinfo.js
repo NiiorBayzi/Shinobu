@@ -1,4 +1,4 @@
-module.exports {
+module.exports = {
   name: "botinfo",
   aliases: ["bi", "infobot"],
   run: async (client, message, args) => {
