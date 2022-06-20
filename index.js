@@ -22,7 +22,7 @@ glob.sync("./commands/**/*.js").forEach(f => {
 });
 
 client.on("messageCreate", async (message) => {
-  if (!message.author.bot) return;
+  if (message.author.bot) return;
   const cooldown = new Collection();
   let prefix = "sk?";
   
@@ -31,7 +31,7 @@ client.on("messageCreate", async (message) => {
     let args = message.content.trim().slice(prefix.length).split(/ +/g);
     let command = args.shift().toLowerCase();
     if (!command) return message.reply(`>>> **(${emoji.error}) | ${parseText(message.author.username)}**, digite o comando que você quer executar.`);
-    let cmd = client.commands.get(command) || client.users.cache.find(c => (x.aliases || []).includes(command));
+    let cmd = client.commands.get(command) || client.users.cache.find(c => (c.aliases || []).includes(command));
     if (!cmd) {
       search.addDocuments(client.commands.filter(x => (x.dev || false) != true));
       search.addIndex('name');
