@@ -3,6 +3,9 @@ const UserSchema = new mongoose.Schema({
     type: Number,
     default: 0
   },
+  cooldowns: {
+    type: Object
+  }
   _id: {
     type: String,
     required: true
