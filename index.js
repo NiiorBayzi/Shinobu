@@ -15,7 +15,7 @@ client.once("ready", () => {
 
 glob.sync("./commands/**/*.js").forEach(f => {
   let command = require(f);
-  let dir = file.split("/");
+  let dir = f.split("/");
   command.category = dir[dir.length - 2];
 
   client.commands.set(command.name, command);
