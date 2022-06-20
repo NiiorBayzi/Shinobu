@@ -15,7 +15,6 @@ client.connectDatabase = async () => {
   let models = {
     city: require("./database/models/cityModel.js"),
     users: require("./database/models/userModel.js"),
-    client: require("./database/models/cityModel.js")
   }
   client.db = {connection,...models};
   console.log("[ Mongoose ] Successfully connected.");
