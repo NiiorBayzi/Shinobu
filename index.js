@@ -50,7 +50,7 @@ client.on("messageCreate", async (message) => {
         }, 6000);
         setTimeout(() => {
           client.db.users.create({ _id: message.author.id });
-          msg.edit(`>>> **(${emoji.forms_complete})**, seu perfil foi criado com **sucesso**! Agora você pode usar meus comandos.`);
+          msg.edit(`>>> **(${emoji.forms_complete})** | ${parseText(message.author.username)}**, seu perfil foi criado com **sucesso**! Agora você pode usar meus comandos.`);
           cooldown.delete(message.author.id);
         }, 12000);
       });
