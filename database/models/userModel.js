@@ -5,7 +5,7 @@ const UserSchema = new mongoose.Schema({
   },
   cooldowns: {
     type: Object
-  }
+  },
   _id: {
     type: String,
     required: true
