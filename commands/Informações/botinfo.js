@@ -15,7 +15,7 @@ module.exports = {
         value: `>>> **Servidores:** ${client.guilds.cache.size.toLocaleString("pt-br")}\n**Usuários:** ${client.users.cache.size.toLocaleString("pt-br")}\n**Comandos:** ${client.commands.size.toLocaleString("pt-br")}`
       }, {
         name: `(${emoji.host}) » Sistema`,
-        value: `>>> `
+        value: `>>> **Hospedagem:** [Heroku](https://heroku.com/)\n**Database:** [MongoDB](https://www.mongodb.com/)\n**Software:** [Node.js ${process.version}](https://nodejs.org/pt-br/)\n**Livraria:** [Discord.js v${Discord.version}](https://www.npmjs.com/package/discord.js)`
       })
       .setFooter({ text: message.author.tag, iconURL: message.author.avatarURL() })
       .setTimestamp()
