@@ -1,5 +1,6 @@
 global.Discord = require("discord.js");
 global.glob = require("glob");
+global.os = require("os");
 const jssearch = require("js-search");
 global.search = new jssearch.Search('isbn');
 search.indexStrategy = new jssearch.AllSubstringsIndexStrategy();
