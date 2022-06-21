@@ -101,5 +101,8 @@ global.parseText = function (text) {
   if (!text) return undefined;
   return text.replace(/[*`_]/g, "").trim();
 }
+global.formatMemory = function (data) {
+  return `${Math.round(data / 1024 / 1024 * 100) / 100} MB`
+}
 
 client.login(process.env.token);
