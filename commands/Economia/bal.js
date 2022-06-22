@@ -1,14 +1,11 @@
 module.exports = {
   name: "bal",
   aliases: ["atm", "wallet", "saldo", "carteira"],
-  run: async (client, message, args) => {
+  run: async (client, message, args, db) => {
     let user = client.users.findUser(args.join(" ")) || message.author;
-    let cash;
-    client.db.users.findOne({ _id: message.author.id }, async (err, user) => {
-      if (!(await user)) return message.reply("**(${emoji.error}) | Não encontrei este usuário no meu banco de dados.**");
-      cash = await user.cash.toString();
-    });
+    let data = db.find(x => x._id === user.id);
+    if (!data) message.reply(`**(${emoji.error}) | ${parseText(message.author.username)}**, não encontrei esse usuário em meu **(${emoji.database}) Banco de Dados**.`);
 
-    message.reply(`**(${emoji.wallet}) » <@${message.author.id}>**, **${parseText(user.username)}** possui **${emoji.stars} ${cash}** eu sua carteira.`);
+    message.reply(`**(${emoji.wallet}) | <@${message.author.id}>**, **${parseText(user.username)}** possui **${emoji.starcoins} ${data.cash}** eu sua carteira.`);
   }
 }
