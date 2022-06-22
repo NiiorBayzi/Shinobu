@@ -30,9 +30,8 @@ function addWord (newWord, authorId) {
     }
   });
   let correct = arr.filter(x => x === "🟩").length;
-
-  term.set({ word: map.word, attempts: map.attempts.push(newWord), correct: correct, emojisArr: arr, win: correct === word.length });
-  return term.get(authorId);
+  term.set(authorId, { word: map.word, attempts: map.attempts.push(newWord) });
+  return { word: map.word, attempts: map.attempts.push(newWord), correct: correct, emojisArr: arr, win: correct === word.length };
 }
 
 let functions = {
