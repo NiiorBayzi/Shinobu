@@ -4,8 +4,7 @@ const words = ["imagem", "gaveta", "condutor", "parafuso", "teoria", "luzes", "n
 function createTerm (first, authorId) {
   if (!term.get(authorId)) return false;
   let word = words[Math.floor(Math.random()*words.length)];
-  term.set(authorId, { word: word, attempts: [first] });
-  return { word: word };
+  return addWord(first, authorId);
 }
 
 function stopTerm (authorId) {
