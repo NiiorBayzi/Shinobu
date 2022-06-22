@@ -39,6 +39,7 @@ glob.sync("./commands/**/*.js").forEach(f => {
 client.on("messageCreate", async (message) => {
   if (message.author.bot) return;
   const cooldown = new Collection();
+  if (message.content.replace("!", "") === `<@${client.user.id}>`) return message.reply(`>>> **(${emoji.shinoYay}) |** Olá **${parseText(message.author.username)}**, eu sou uma bot de **Economia de Cidades**, meu prefixo é **\`${prefix}\`**, use **\`${prefix}help\`** para ver meus comandos.`);
   let prefix = "s?";
   
   if (message.content.toLowerCase().startsWith(prefix)) {
