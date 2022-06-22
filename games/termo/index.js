@@ -2,7 +2,7 @@ const term = new Map();
 const words = ["imagem", "gaveta", "condutor", "parafuso", "teoria", "luzes", "norte", "amanhecer", "sentidos", "baterias"];
 
 function createTerm (first, authorId) {
-  if (!term.get(authorId)) return false;
+  if (term.get(authorId)) return false;
   let word = words[Math.floor(Math.random()*words.length)];
   return addWord(first, authorId);
 }
