@@ -5,7 +5,7 @@ module.exports = {
   name: "eval",
   aliases: ["ev", "e"],
   dev: true,
-  run: async (client, message, args) => {
+  run: async (client, message, args, db) => {
     try {
       let code = args.join(" ");
       let res = undefined;
