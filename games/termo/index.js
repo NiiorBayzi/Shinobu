@@ -13,11 +13,11 @@ function stopTerm (authorId) {
   return term.delete(authorId);
 }
 
-function addWord (word, authorId) {
+function addWord (newWord, authorId) {
   let map = term.get(authorId);
   if (!map) return false;
   let word = map.word.split("");
-  let answer = word.split("");
+  let answer = newWord.split("");
   let arr = [];
 
   answer.forEach(x => {
@@ -31,7 +31,7 @@ function addWord (word, authorId) {
   });
   let correct = arr.filter(x => x === "🟩").length;
 
-  term.set({ word: map.word, attempts: map.attempts.push(word), correct: correct, emojisArr: arr, win: correct === word.length });
+  term.set({ word: map.word, attempts: map.attempts.push(newWord), correct: correct, emojisArr: arr, win: correct === word.length });
   return term.get(authorId);
 }
 
