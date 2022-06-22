@@ -70,14 +70,15 @@ client.on("messageCreate", async (message) => {
     }
 
     try {
+      let db = await client.db.users.find({}).then(e => e);
       if ((cmd.dev || false)) {
         if (!(client.config.devs || []).includes(message.author.id)) {
           return message.reply(`>>> **(${emoji.books_coffe}) | ${parseText(message.author.username)}**, comando permitido apenas para **desenvolvedores**.`);
         } else {
-          cmd.run(client, message, args);
+          cmd.run(client, message, args, db);
         }
       } else {
-        cmd.run(client, message, args);
+        cmd.run(client, message, args, db);
       }
       
       cooldown.set(message.author.id, true);
