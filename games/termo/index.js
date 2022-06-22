@@ -22,11 +22,11 @@ function addWord (newWord, authorId) {
 
   answer.forEach(x => {
     if (word.indexOf(x) === answer.indexOf(x)) {
-      arr.push("🟩");
+      arr.push(emoji.green_square);
     } else if (word.includes(x)) {
-      arr.push("🟨");
+      arr.push(emoji.yellow_square);
     } else {
-      arr.push("🟥");
+      arr.push(emoji.black_square);
     }
   });
   let correct = arr.filter(x => x === "🟩").length;
