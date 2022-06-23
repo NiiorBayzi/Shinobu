@@ -1,5 +1,5 @@
 const term = new Map();
-const words = ["imagem", "gaveta", "condutor", "parafuso", "teoria", "luzes", "norte", "amanhecer", "sentidos", "baterias"];
+const words = require("./words.json");
 
 function createTerm (first, authorId) {
   if (term.get(authorId)) return false;
