@@ -8,6 +8,7 @@ module.exports = {
     if (!first) return message.reply(`**(${emoji.error}) | ${parseText(message.author.username)}**, digite a primeira palavra para começar.`);
     let created = termo.create(first, message.author.id);
     if (!created) return message.reply(`**(${emoji.error}) | ${parseText(message.author.username)}**, você já está em uma partida.`);
+    let word = created.word.split("");
 
     let embed = new Discord.MessageEmbed()
       .setColor(client.config.color)
@@ -22,6 +23,12 @@ module.exports = {
       const collector = message.channel.createMessageCollector({ filter, time: 90000 });
       
       collector.on("collect", (m) => {
+        if (["tip", "dica", "tips", "dicas"].includes(m.content)) {
+          let tipArr = word.slice(0, word.length / 2);
+          word.slice(word.length / 2, word.length).forEach(x => arr.push("_"));
+
+          return m.reply(`**(${emoji.tip}) | Dica:** \`${tipArr.join(" ")}\`.`)
+        }
         answer = m.content.trim().split(/ +/g);
         created = termo.add(answer[0].toLowerCase().replace(/[^a-z]/gi, ""), message.author.id);
 
