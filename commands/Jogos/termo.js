@@ -26,11 +26,18 @@ module.exports = {
 
         embed.setDescription(`${created.attempts.join("\n")}`)
         msg.edit({ embeds: [embed] });
+        if (created) {
+          collector.stop("wins");
+        }
       });
       
       collector.on("end", (collected, reason) => {
         if (reason == "time") {
           msg.reply(`**(${emoji.time}) | <@${message.author.id}>**, seu tempo acabou, a palavra era \`${created.word}\`.`);
+          termo.stop(message.author.id);
+        } else if (reason == "wins") {
+          msg.reply(`**(${emoji.confetti}) | <@${message.author.id}>**, você conseguiu acertar a palavra do termo.`);
+          termo.stop(message.author.id);
         }
       });
     });
