@@ -25,7 +25,7 @@ module.exports = {
       collector.on("collect", (m) => {
         if (["tip", "dica", "tips", "dicas"].includes(m.content)) {
           let tipArr = word.slice(0, word.length / 2);
-          word.slice(word.length / 2, word.length).forEach(x => arr.push("_"));
+          word.slice(word.length / 2, word.length).forEach(x => tipArr.push("_"));
 
           return m.reply(`**(${emoji.tip}) | Dica:** \`${tipArr.join(" ")}\`.`)
         }
