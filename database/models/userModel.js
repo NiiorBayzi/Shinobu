@@ -6,9 +6,7 @@ const UserSchema = new mongoose.Schema({
   cooldowns: {
     daily: { type: Number },
     work: { type: Number },
-    weekly: { type: Number },
-    type: { type: Object },
-    default: {}
+    weekly: { type: Number }
   },
   _id: {
     type: String,
