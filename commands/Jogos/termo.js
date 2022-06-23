@@ -4,7 +4,7 @@ module.exports = {
   name: "termo",
   aliases: ["term"],
   run: async (client, message, args) => {
-    let first = args[0]?.toLowerCase().replace(/[^a-z]/gi, "");
+    let first = parseText(args[0]?.toLowerCase());
     if (!first) return message.reply(`**(${emoji.error}) | ${parseText(message.author.username)}**, digite a primeira palavra para começar.`);
     let created = termo.create(first, message.author.id);
     if (!created) return message.reply(`**(${emoji.error}) | ${parseText(message.author.username)}**, você já está em uma partida.`);
@@ -30,7 +30,7 @@ module.exports = {
           return m.reply(`**(${emoji.tip}) | Dica:** \`${tipArr.join(" ")}\`.`)
         }
         answer = m.content.trim().split(/ +/g);
-        created = termo.add(answer[0].toLowerCase().replace(/[^a-z]/gi, ""), message.author.id);
+        created = termo.add(parseText(answer[0].toLowerCase()), message.author.id);
 
         embed.setDescription(`${created.attempts.join("\n")}`)
         msg.edit({ embeds: [embed] });
