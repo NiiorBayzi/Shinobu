@@ -9,7 +9,7 @@ module.exports = {
   run: async (client, message, args, db) => {
     try {
       let code = args.join(" ");
-      let res = undefined;
+      let res;
       if (code.startsWith("--o ")) {
         args.shift();
         code = args.join(" ");
