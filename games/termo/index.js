@@ -21,9 +21,9 @@ function addWord (newWord, authorId) {
   let arr = [];
 
   answer.forEach(x => {
-    if (word.indexOf(x) === answer.indexOf(x)) {
+    if (word.indexOf(x).normalize('NFD').replace(/[\u0300-\u036f]/gi,'') === answer.indexOf(x).normalize('NFD').replace(/[\u0300-\u036f]/gi,'')) {
       arr.push(emoji.green_square);
-    } else if (word.includes(x)) {
+    } else if (word.normalize('NFD').replace(/[\u0300-\u036f]/gi,'').includes(x)) {
       arr.push(emoji.yellow_square);
     } else {
       arr.push(emoji.black_square);
