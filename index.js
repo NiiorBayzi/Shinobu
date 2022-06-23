@@ -44,8 +44,9 @@ client.on("messageCreate", async (message) => {
   
   if (message.content.toLowerCase().startsWith(prefix)) {
     if (cooldown.get(message.author.id)) return message.reply(`>>> **(${emoji.time}) | ${parseText(message.author.username)}**, você está executando meus comandos rápido demais.`);
+    cooldown.set(message.author.id, true);
+    setTimeout(() => cooldown.delete(message.author.id), 5000);
     if (!await client.db.users.findOne({ _id: message.author.id })) {
-      cooldown.set(message.author.id, true);
       return message.reply(`**(${emoji.searchUser}) | ${parseText(message.author.username)}**, não encontrei você em meu **(${emoji.database}) Banco de Dados**, irei criar seu perfil.\n>>> **(${emoji.forms}) | Criando perfil, aguarde...**`).then((msg) => {
         setTimeout(() => {
           msg.edit(`>>> **(${emoji.cloud_upload}) | ${parseText(message.author.username)}**, enviando dados do perfil para o **(${emoji.database}) Banco de Dados**...`);
@@ -80,9 +81,6 @@ client.on("messageCreate", async (message) => {
       } else {
         cmd.run(client, message, args, db);
       }
-      
-      cooldown.set(message.author.id, true);
-      setTimeout(() => cooldown.delete(message.author.id), 5000)
     } catch (err) {
       message.reply(`>>> **(${emoji.error}) | ${parseText(message.author.username)},** ocorreu um erro, tente novamente.`);
       console.log(err);
