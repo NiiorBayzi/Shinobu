@@ -16,9 +16,8 @@ function stopTerm (authorId) {
 function addWord (newWord, authorId) {
   let map = term.get(authorId);
   if (!map) return false;
-  let word = map.word.normalize('NFD').replace(/[\u0300-\u036f]/gi,'').split("");
+  let word = map.word.split("");
   let answer = newWord.split("").slice(0, word.length);
-  let answer2 = answer.join("").normalize('NFD').replace(/[\u0300-\u036f]/gi,'').split("");
   let arr = [];
 
   answer2.forEach(x => {
