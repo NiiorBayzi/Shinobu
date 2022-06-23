@@ -4,7 +4,6 @@ const cd = new Discord.Collection();
 module.exports = {
   name: "termo",
   aliases: ["term"],
-  dev: true,
   run: async (client, message, args) => {
     let first = parseText(args[0]?.toLowerCase());
     if (!first) return message.reply(`**(${emoji.error}) | ${parseText(message.author.username)}**, digite a primeira palavra para começar.`);
