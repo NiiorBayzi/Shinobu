@@ -4,7 +4,8 @@ const UserSchema = new mongoose.Schema({
     default: 0
   },
   cooldowns: {
-    type: Object
+    type: Object,
+    default: {}
   },
   _id: {
     type: String,
