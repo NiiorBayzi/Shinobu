@@ -22,6 +22,8 @@ client.connectDatabase = async () => {
 }
 // ...
 
+process.on('uncaughtException', err => client.channels.cache.get('989581223112343552').send(`${err.stack}`));
+
 client.once("ready", () => {
   console.log(`[ Discord.js ] Successfully connected in ${client.user.tag}.`);
   client.connectDatabase();
