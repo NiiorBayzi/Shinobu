@@ -1,4 +1,5 @@
-const term = require("../../games/termo/index.js");
+const termo = require("../../games/termo/index.js");
+
 module.exports = {
   name: "termo",
   aliases: ["term"],
