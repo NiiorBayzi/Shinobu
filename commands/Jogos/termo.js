@@ -26,7 +26,7 @@ module.exports = {
       collector.on("collect", (m) => {
         if (cd.get(m.author.id)) return message.reply(`**(${emoji.time}) | ${parseText(m.author.username)}**, você está digitando muito rápido.`).then((a) => { setTimeout(() => a.delete(), 2500) });
         cd.set(m.author.id, true);
-        setTimeout(() => db.delete(m.author.id), 1500);
+        setTimeout(() => cd.delete(m.author.id), 1500);
         if (["tip", "dica", "tips", "dicas"].includes(m.content)) {
           let tipArr = word.slice(0, word.length / 2);
           word.slice(word.length / 2, word.length).forEach(x => tipArr.push("_"));
