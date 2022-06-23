@@ -4,7 +4,10 @@ const UserSchema = new mongoose.Schema({
     default: 0
   },
   cooldowns: {
-    type: Object,
+    daily: { type: Number },
+    work: { type: Number },
+    weekly: { type: Number },
+    type: { type: Object },
     default: {}
   },
   _id: {
