@@ -17,7 +17,7 @@ function addWord (newWord, authorId) {
   let map = term.get(authorId);
   if (!map) return false;
   let word = map.word.split("");
-  let answer = newWord.split("").slice(0, words.length - 1);
+  let answer = newWord.split("").slice(0, word.length);
   let arr = [];
 
   answer.forEach(x => {
@@ -29,7 +29,7 @@ function addWord (newWord, authorId) {
       arr.push(emoji.black_square);
     }
   });
-  String(` ${emoji.red_square}`).repeat(words.length - answer.length).trim().split(" ").forEach(x => arr.push(x));
+  String(` ${emoji.red_square}`).repeat(word.length - answer.length).trim().split(" ").forEach(x => arr.push(x));
 
   let correct = arr.filter(x => x === emoji.green_square).length;
   map.attempts.push(`${arr.join(" ")} - ${newWord}`);
