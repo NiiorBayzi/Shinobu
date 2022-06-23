@@ -37,10 +37,18 @@ function addWord (newWord, authorId) {
   return { word: map.word, attempts: map.attempts, correct: correct, win: correct === word.length };
 }
 
+function infoTerm (authorId) {
+  let map = term.get(authorId);
+  if (!map) return false;
+
+  return map;
+}
+
 let functions = {
   create: createTerm,
   stop: stopTerm,
-  add: addWord
+  add: addWord,
+  info: infoTerm
 }
 
 module.exports = {...functions}
