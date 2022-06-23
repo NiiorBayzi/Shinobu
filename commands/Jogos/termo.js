@@ -26,7 +26,7 @@ module.exports = {
 
         embed.setDescription(`${created.attempts.join("\n")}`)
         msg.edit({ embeds: [embed] });
-        if (created) {
+        if (created.win) {
           collector.stop("wins");
         }
       });
