@@ -17,7 +17,7 @@ function addWord (newWord, authorId) {
   let map = term.get(authorId);
   if (!map) return false;
   let word = map.word.split("");
-  let answer = newWord.split("").slice(0, words.length);
+  let answer = newWord.split("").slice(0, words.length - 1);
   let arr = [];
 
   answer.forEach(x => {
