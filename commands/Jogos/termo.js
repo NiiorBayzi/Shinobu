@@ -20,7 +20,7 @@ module.exports = {
       .setTimestamp()
 
     message.reply({ embeds: [embed] }).then((msg) => {
-      let filter = m => m.author.id === message.author.id;
+      let filter = m => m.author.id === message.author.id && m.content;
       const collector = message.channel.createMessageCollector({ filter, time: 90000 });
       
       collector.on("collect", (m) => {
