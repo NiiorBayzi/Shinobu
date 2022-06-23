@@ -28,7 +28,8 @@ function addWord (newWord, authorId) {
     } else {
       arr.push(emoji.black_square);
     }
-    
+  }
+
   let correct = arr.filter(x => x === emoji.green_square).length;
   map.attempts.push(`${arr.join(" ")} - ${newWord}`);
   term.set(authorId, { word: map.word, attempts: map.attempts });
