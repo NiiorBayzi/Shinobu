@@ -15,6 +15,19 @@ module.exports = {
       .setFooter({ text: `${message.author.tag} (${message.author.id})`, iconURL: message.author.avatarURL({ dynamic: true }) })
       .setTimestamp()
 
-    message.reply({ embeds: [embed] });
+    message.reply({ embeds: [embed] }).then((msg) => {
+      let filter = m => m.author.id === message.author.id;
+      const collector = message.channel.createMessageCollector({ filter, time: 90000 });
+      
+      collector.on("collect", (m) => {
+        
+      });
+      
+      collector.on("end", (collected, reason) => {
+        if (reason == "time") {
+          
+        }
+      });
+    });
   }
 }
