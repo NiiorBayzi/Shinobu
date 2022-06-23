@@ -22,7 +22,7 @@ client.connectDatabase = async () => {
 }
 // ...
 
-process.on('uncaughtException', err => client.channels.cache.get('989581223112343552').send(`${err.stack}`));
+process.on('uncaughtException', err => client.channels.cache.get('989581223112343552').send(`**() | Error: \`\`\`js\n${err.stack}\`\`\``));
 
 client.once("ready", () => {
   console.log(`[ Discord.js ] Successfully connected in ${client.user.tag}.`);
@@ -47,10 +47,9 @@ client.on("messageCreate", async (message) => {
   
   if (message.content.toLowerCase().startsWith(prefix)) {
     if (cooldown.get(message.author.id)) return message.reply(`>>> **(${emoji.time}) | ${parseText(message.author.username)}**, você está executando meus comandos rápido demais.`);
-    cooldown.set(message.author.id, true);
-    setTimeout(() => cooldown.delete(message.author.id), 5000);
     if (!await client.db.users.findOne({ _id: message.author.id })) {
       return message.reply(`**(${emoji.searchUser}) | ${parseText(message.author.username)}**, não encontrei você em meu **(${emoji.database}) Banco de Dados**, irei criar seu perfil.\n>>> **(${emoji.forms}) | Criando perfil, aguarde...**`).then((msg) => {
+        cooldown.set(message.author.id, true);
         setTimeout(() => {
           msg.edit(`>>> **(${emoji.cloud_upload}) | ${parseText(message.author.username)}**, enviando dados do perfil para o **(${emoji.database}) Banco de Dados**...`);
         }, 6000);
@@ -84,6 +83,8 @@ client.on("messageCreate", async (message) => {
       } else {
         cmd.run(client, message, args, db);
       }
+      cooldown.set(message.author.id, true);
+      setTimeout(() => cooldown.delete(message.author.id), 5000);
     } catch (err) {
       message.reply(`>>> **(${emoji.error}) | ${parseText(message.author.username)},** ocorreu um erro, tente novamente.`);
       console.log(err);
