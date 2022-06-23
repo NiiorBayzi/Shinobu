@@ -4,6 +4,7 @@ module.exports = {
   name: "termo",
   aliases: ["term"],
   run: async (client, message, args) => {
+    if (!args[0]) return message.reply(`**(${emoji.error}) | ${parseText(message.author.username)}**, digite a primeira palavra para começar.`);
     let created = termo.create(args[0].toLowerCase().replace(/[^a-z]/gi, ""), message.author.id);
     if (!created) return message.reply(`**(${emoji.error}) | ${parseText(message.author.username)}**, você já está em uma partida.`);
 
