@@ -16,14 +16,15 @@ function stopTerm (authorId) {
 function addWord (newWord, authorId) {
   let map = term.get(authorId);
   if (!map) return false;
-  let word = map.word.split("");
+  let word = map.word.normalize('NFD').replace(/[\u0300-\u036f]/gi,'').split("");
   let answer = newWord.split("").slice(0, word.length);
+  let answer2 = answer.join("").normalize('NFD').replace(/[\u0300-\u036f]/gi,'').split("");
   let arr = [];
 
-  answer.forEach(x => {
-    if (word.indexOf(x).normalize('NFD').replace(/[\u0300-\u036f]/gi,'') === answer.indexOf(x).normalize('NFD').replace(/[\u0300-\u036f]/gi,'')) {
+  answer2.forEach(x => {
+    if (word.indexOf(x) === answer2.indexOf(x)) {
       arr.push(emoji.green_square);
-    } else if (word.normalize('NFD').replace(/[\u0300-\u036f]/gi,'').includes(x)) {
+    } else if (word.includes(x)) {
       arr.push(emoji.yellow_square);
     } else {
       arr.push(emoji.black_square);
