@@ -20,8 +20,8 @@ function addWord (newWord, authorId) {
   let answer = newWord.split("").slice(0, word.length);
   let arr = [];
 
-  answer2.forEach(x => {
-    if (word.indexOf(x) === answer2.indexOf(x)) {
+  answer.forEach(x => {
+    if (word.indexOf(x) === answer.indexOf(x)) {
       arr.push(emoji.green_square);
     } else if (word.includes(x)) {
       arr.push(emoji.yellow_square);
