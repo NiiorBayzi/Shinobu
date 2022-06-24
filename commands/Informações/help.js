@@ -5,7 +5,7 @@ module.exports = {
     let embed = new Discord.MessageEmbed()
       .setColor(client.config.color)
       .setTitle(`Painel de Ajuda | ${client.user.username}`)
-      .setThumbnail(emoji.attendant)
+      .setThumbnail("https://cdn.discordapp.com/emojis/989710923121975327.png?size=2048")
       .addFields({
         name: `${emoji.wallet} » Economia`,
         value: "`" + client.commands.filter(x => !x.dev && x.category == "Economia").map(x => x.name).join("` | `") + "`"
