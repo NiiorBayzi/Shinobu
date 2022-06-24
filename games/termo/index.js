@@ -17,12 +17,14 @@ function addWord (newWord, authorId) {
   let map = term.get(authorId);
   if (!map) return false;
   let word = map.word.split("");
+  word2 = word.slice();
   let answer = newWord.split("").slice(0, word.length);
   let arr = [];
 
   answer.forEach(x => {
-    if (word.indexOf(x) === answer.indexOf(x)) {
+    if (word2.indexOf(x) === answer.indexOf(x)) {
       arr.push(emoji.green_square);
+      word2.shift();
     } else if (word.includes(x)) {
       arr.push(emoji.yellow_square);
     } else {
