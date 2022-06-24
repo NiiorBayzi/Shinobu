@@ -4,7 +4,7 @@ module.exports = {
   run: async (client, message, args) => {
     let embed = new Discord.MessageEmbed()
       .setColor(client.config.color)
-      .setTitle(`Painel de Ajuda | ${client.user.username}`)
+      .setTitle(`(${emoji.shinoSparkle}) | Painel de Ajuda | ${client.user.username}`)
       .setThumbnail("https://cdn.discordapp.com/emojis/989710923121975327.png?size=2048")
       .addFields({
         name: `${emoji.wallet} » Economia`,
@@ -12,6 +12,9 @@ module.exports = {
       }, {
         name: `${emoji.info} » Informações`,
         value: "`" + client.commands.filter(x => !x.dev && x.category == "Informações").map(x => x.name).join("` | `") + "`"
+      }, {
+        name: `${emoji.game} » Jogos`,
+        value: "`" + client.commands.filter(x => !x.dev && x.category == "Jogos").map(x => x.name).join("` | `") + "`"
       })
       .setFooter({ text: `${message.author.tag} (${message.author.id})`, iconURL: client.user.avatarURL({ dynamic: true }) })
       .setTimestamp()
