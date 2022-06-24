@@ -4,7 +4,7 @@ const words = require("./words.json");
 function createTerm (first, authorId) {
   if (term.get(authorId)) return false;
   let word = words[Math.floor(Math.random()*words.length)];
-  term.set(authorId, { word: word, attempts: ["start"] });
+  term.set(authorId, { word: word, attempts: [] });
   return addWord(first, authorId);
 }
 
