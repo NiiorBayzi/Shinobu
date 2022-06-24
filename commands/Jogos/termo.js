@@ -14,7 +14,7 @@ module.exports = {
     let embed = new Discord.MessageEmbed()
       .setColor(client.config.color)
       .setTitle(`(${emoji.graduation}) | Termo`)
-      .setDescription(`${created.attempts.join("\n")}`)
+      .setDescription(`${created.attempts.slice(1, 2).join("\n")}`)
       .setThumbnail("https://cdn.discordapp.com/emojis/989366183235043378.png?size=2048")
       .setFooter({ text: `${message.author.tag} (${message.author.id})`, iconURL: message.author.avatarURL({ dynamic: true }) })
       .setTimestamp()
