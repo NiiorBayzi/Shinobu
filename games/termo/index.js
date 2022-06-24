@@ -23,9 +23,10 @@ function addWord (newWord, authorId) {
   let arr = [];
 
   answer.forEach(x => {
-    if (word2.indexOf(x) === answer2.indexOf(x)) {
+    if (word2[0] === answer2[0]) {
       arr.push(emoji.green_square);
       word2.shift();
+      answer2.shift();
     } else if (word.includes(x)) {
       arr.push(emoji.yellow_square);
     } else {
