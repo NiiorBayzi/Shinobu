@@ -14,7 +14,7 @@ module.exports = {
     let embed = new Discord.MessageEmbed()
       .setColor(client.config.color)
       .setTitle(`(${emoji.graduation}) | Termo`)
-      .setDescription(`${created.attempts.slice(1, 2).join("\n")}`)
+      .setDescription(`${created.attempts.slice(0).join("\n")}`)
       .setThumbnail("https://cdn.discordapp.com/emojis/989366183235043378.png?size=2048")
       .setFooter({ text: `${message.author.tag} (${message.author.id})`, iconURL: message.author.avatarURL({ dynamic: true }) })
       .setTimestamp()
@@ -35,7 +35,7 @@ module.exports = {
         answer = m.content.trim().split(/ +/g);
         created = termo.add(parseText(answer[0].toLowerCase()), m.author.id);
 
-        embed.setDescription(`${(created.attempts.length > 10 ? created.attempts.slice(created.attempts.length - 9, created.attempts.length) : created.attempts).join("\n")}`)
+        embed.setDescription(`${(created.attempts.length > 10 ? created.attempts.slice(created.attempts.length - 10, created.attempts.length) : created.attempts).join("\n")}`)
         msg.edit({ embeds: [embed] });
         if (created.win) {
           collector.stop("wins");
