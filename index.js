@@ -47,7 +47,20 @@ client.on("messageCreate", async (message) => {
   
   if (message.content.toLowerCase().startsWith(prefix)) {
     if (cooldown.get(message.author.id)) return message.reply(`>>> **(${emoji.time}) | ${parseText(message.author.username)}**, você está executando meus comandos rápido demais.`);
-    if (!await client.db.users.findOne({ _id: message.author.id })) {
+    let args = message.content.trim().slice(prefix.length).split(/ +/g);
+    let command = args.shift().toLowerCase();
+    if (!command) return message.reply(`>>> **(${emoji.error}) | ${parseText(message.author.username)}**, digite o comando que você quer executar.`);
+    let cmd = client.commands.get(command) || client.commands.find(c => (c.aliases || []).includes(command));
+    if (!cmd) {
+      search.addDocuments(client.commands.filter(x => (x.dev || false) != true).map(x => x));
+      search.addIndex('name');
+      search.addIndex('aliases');
+      let sh = search.search(command)[0];
+      return message.reply(`>>> **(${emoji.not_finded}) | ${parseText(message.author.username)}**, não encontrei este comando${sh ? `, você quis dizer \`${sh.name}\`?` : ", verifique como você colocou."}`);
+    }
+    let db = await client.db.users.find({}).then(e => e);
+    db.user = await client.db.users.findOne({ _id: message.author.id });
+    if (!db.user) {
       return message.reply(`**(${emoji.searchUser}) | ${parseText(message.author.username)}**, não encontrei você em meu **(${emoji.database}) Banco de Dados**, irei criar seu perfil.\n>>> **(${emoji.forms}) | Criando perfil, aguarde...**`).then((msg) => {
         cooldown.set(message.author.id, true);
         setTimeout(() => {
@@ -60,20 +73,8 @@ client.on("messageCreate", async (message) => {
         }, 12000);
       });
     }
-    let args = message.content.trim().slice(prefix.length).split(/ +/g);
-    let command = args.shift().toLowerCase();
-    if (!command) return message.reply(`>>> **(${emoji.error}) | ${parseText(message.author.username)}**, digite o comando que você quer executar.`);
-    let cmd = client.commands.get(command) || client.commands.find(c => (c.aliases || []).includes(command));
-    if (!cmd) {
-      search.addDocuments(client.commands.filter(x => (x.dev || false) != true).map(x => x));
-      search.addIndex('name');
-      search.addIndex('aliases');
-      let sh = search.search(command)[0];
-      return message.reply(`>>> **(${emoji.not_finded}) | ${parseText(message.author.username)}**, não encontrei este comando${sh ? `, você quis dizer \`${sh.name}\`?` : ", verifique como você colocou."}`);
-    }
 
     try {
-      let db = await client.db.users.find({}).then(e => e);
       if ((cmd.dev || false)) {
         if (!(client.config.devs || []).includes(message.author.id)) {
           return message.reply(`>>> **(${emoji.books_coffe}) | ${parseText(message.author.username)}**, comando permitido apenas para **desenvolvedores**.`);
