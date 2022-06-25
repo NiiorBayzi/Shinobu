@@ -27,12 +27,12 @@ module.exports = {
         cd.set(m.author.id, true);
         setTimeout(() => cd.delete(m.author.id), 1500);
         answer = m.content.trim().split(/ +/g);
-        if (parseText(answer[0]).length < 5) return message.reply(`**(${emoji.error}) | ${parseText(m.author.username)}**, coloque no mínimo **5 letras**.`).then((a) => { setTimeout(() => a.delete(), 2500) });
         if (["tip", "dica", "tips", "dicas"].includes(m.content.toLowerCase())) {
           let tipArr = word.slice(0, word.length / 2);
           word.slice(word.length / 2, word.length).forEach(x => tipArr.push("_"));
           return m.reply(`**(${emoji.tip}) | Dica:** \`${tipArr.join(" ")}\`.`)
         }
+        if (parseText(answer[0]).length < 5) return message.reply(`**(${emoji.error}) | ${parseText(m.author.username)}**, coloque no mínimo **5 letras**.`).then((a) => { setTimeout(() => a.delete(), 2500) });
         created = termo.add(parseText(answer[0].toLowerCase()), m.author.id);
         embed.setDescription(`${(created.attempts.length > 10 ? created.attempts.slice(created.attempts.length - 10, created.attempts.length) : created.attempts).join("\n")}`)
         msg.edit({ embeds: [embed] });
