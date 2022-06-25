@@ -5,7 +5,7 @@ module.exports = {
   name: "termo",
   aliases: ["term"],
   run: async (client, message, args) => {
-    let created = false;
+    let created = true;
     if (!created) return message.reply(`**(${emoji.error}) | ${parseText(message.author.username)}**, você já está em uma partida.`);
     let word;
 
