@@ -9,7 +9,7 @@ const UserSchema = new mongoose.Schema({
     weekly: { type: Number }
   },
   media: {
-    at: { type: String, required: true },
+    at: { type: String },
     bio: { type: String },
     posts: { type: Array }
   },
