@@ -94,8 +94,8 @@ client.on("messageCreate", async (message) => {
   }
 });
 
-client.on('messageUpdate', (old, new) => {
-  client.emit('messageCreate', new);
+client.on('messageUpdate', (old, newM) => {
+  client.emit('messageCreate', newM);
 });
 
 // Function
