@@ -4,7 +4,6 @@ const cd = new Discord.Collection();
 module.exports = {
   name: "termo",
   aliases: ["term"],
-  dev: true,
   run: async (client, message, args) => {
     let created = termo.create("started", message.author.id);
     if (!created) return message.reply(`**(${emoji.error}) | ${parseText(message.author.username)}**, você já está em uma partida.`);
