@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const canvas = require("canvas");
+const Canvas = require("canvas");
 let termo = require("../../games/termo/index.js");
 
 module.exports = {
