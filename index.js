@@ -94,7 +94,11 @@ client.on("messageCreate", async (message) => {
   }
 });
 
-// Functions
+client.on('messageUpdate', (old, new) => {
+  client.emit('messageCreate');
+});
+
+// Function
 client.users.findUser = function (args) {
   let user = null;
   if (!args) return user;
