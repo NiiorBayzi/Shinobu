@@ -8,6 +8,11 @@ const UserSchema = new mongoose.Schema({
     work: { type: Number },
     weekly: { type: Number }
   },
+  media: {
+    at: { type: String, required: true },
+    bio: { type: String },
+    posts: { type: Array }
+  },
   _id: {
     type: String,
     required: true
