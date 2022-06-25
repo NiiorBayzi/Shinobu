@@ -38,7 +38,7 @@ function addWord (newWord, authorId) {
   let correct = arr.filter(x => x === emoji.green_square).length;
   map.attempts.push(`${arr.join(" ")} - ${answer.join("")}`);
   term.set(authorId, { word: map.word, attempts: map.attempts });
-  return { word: map.word, attempts: map.attempts, correct: correct, win: correct === word.length };
+  return { word: map.word, attempts: map.attempts.slice(1, map.attempts.length), correct: correct, win: correct === word.length };
 }
 
 function infoTerm (authorId) {
