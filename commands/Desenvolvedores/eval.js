@@ -17,6 +17,7 @@ module.exports = {
         global.main = client;
         global.main.message = message;
         global.main.message.args = args;
+        global.main.Canvas = Canvas;
         res = require('util').inspect(await Object.getPrototypeOf(async () => { }).constructor(code)());
       } else {
         res = await require("util").inspect(eval(code));
